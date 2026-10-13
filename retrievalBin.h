@@ -1,13 +1,16 @@
 #pragma once
 include <vector>
 
-private class retrievalBin {
+private class RetrievalBin {
 	bool status;
 	string<vector> contents;
-	void setStatus() {
+	void getContents() {
 
 	}
-	void getStatus() {
+	void setContents() {
+
+	}
+	void emptyContents() {
 
 	}
 };
