@@ -1,16 +1,22 @@
 #pragma once
-include <vector>
+#include <vector>
 
-private class RetrievalBin {
+class RetrievalBin {
+private:
 	bool status;
-	string<vector> contents;
-	void getContents() {
+	vector<string> contents;
 
+public:
+	void getContents() 
+	{
+		return contents;
 	}
-	void setContents() {
-
+	void setContents(vector<string> newContents)
+	{
+		contents = newContents; 
 	}
-	void emptyContents() {
-
+	void emptyContents() 
+	{
+		contents.clear();
 	}
 };

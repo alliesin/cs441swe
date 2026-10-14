@@ -1,6 +1,12 @@
 #pragma once
-private class vendingMachine() {
+#include "SnackDispenser.h"
+#include "Door.h"
+
+class vendingMachine() {
+private:
 	bool state;
-	snackStorage;
-	Door;
+	SnackDispenser snackDispenser;
+	Door door;
+
+public:
 }

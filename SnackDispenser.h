@@ -1,5 +1,12 @@
 #pragma once
-private class SnackDispenser() {
-	SnackStorage;
-	RetrievalBin;
+#include "snackStorage.h"
+#include "retrievalBin.h"
+
+class SnackDispenser() 
+{
+private:
+	snackStorage storage;
+	retrievalBin bin;
+
+public:
 }

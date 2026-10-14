@@ -1,13 +1,18 @@
 #pragma once
-include <vector>
+#include <vector>
 
-private class SnackStorage {
-	int capacityPer;
-	void setCapacityPer() {
+class SnackStorage {
+private:
+    int capacityPer;
 
-	}
-	void getCapacityPer() {
+public:
+    void setCapacityPer(int capacity) {
+        capacityPer = capacity;
+    }
 
-	}
+    int getCapacityPer() {
+        return capacityPer;
+    }
 };
+
 

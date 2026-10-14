@@ -1,20 +1,28 @@
 #pragma once
-private class slotRow {
+class slotRow {
+private:
 	int ID;
 	int capacity;
-	void getID() {
 
+public:
+	void getID() 
+	{
+		return ID;
 	}
-	void getCapacity() {
-
+	void getCapacity() 
+	{
+		return capacity;
 	}
-	void setID() {
-
+	void setID(int newID) 
+	{
+		ID = newID;
 	}
-	void setCapacity() {
-
+	void setCapacity(int newCapacity) 
+	{
+		capacity = newCapacity;
 	}
-	void refillRow() {
+	void refillRow() 
+	{
 
 	}
 };

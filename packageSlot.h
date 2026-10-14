@@ -1,21 +1,30 @@
 #pragma once
-private class packageSlot {
+#include <string>
+
+class packageSlot {
+private:
 	int packagesDispensed;
-	int Coil[];
+	int Coil[10];
 	string snack;
-	void dispense() {
+public:
+	void dispense() 
+	{
 
 	}
-	void getSnack() {
+	void getSnack() 
+	{
+		
+	}
+	void setSnack() 
+	{
 
 	}
-	void setSnack() {
+	void setPackagesDispensed() 
+	{
 
 	}
-	void setPackagesDispensed() {
-
-	}
-	void getPackagesDispensed() {
+	void getPackagesDispensed() 
+	{
 
 	}
 };
