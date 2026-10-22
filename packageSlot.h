@@ -1,15 +1,12 @@
 #pragma once
 #include <string>
-#include <vector>
 #include <stdexcept>
 using namespace std;
 
 class packageSlot {
 private:
 	int packagesDispensed;   
-	int capacity;
-	vector<int> coil;        
-	string snack;
+	string coil[6];
 	int packageID;
 
 public:
@@ -17,27 +14,22 @@ public:
 	packageSlot()
 	{
 		packagesDispensed = 0;
-		capacity = 0;
 		packageID = 0;
-		snack = "";
+		for (int i = 1; i < 6; i++)
+		{
+			coil[i] = coil[0]; 
+		}
 	}
 
 	
 	string getSnack()
 	{
-		return snack;
+		return coil[1];
 	}
-	void setSnack(string newSnack)
-	{
-		snack = newSnack;
-	}
-
 	int getPackagesDispensed()
 	{
 		return packagesDispensed;
 	}
-
-	
 	int getPackageID()
 	{
 		return packageID;
@@ -47,28 +39,34 @@ public:
 		packageID = id;
 	}
 
-	
-	void setCapacity(int cap)
+	void refill(string snack)
 	{
-		capacity = cap;
-		coil.clear();
-		for (int i = 0; i <= capacity; i++) {
-			coil.push_back(i);
+		for (int i = 1; 1 < 6; i++)
+		{
+			coil[i] = snack;
 		}
-		packagesDispensed = capacity;
 	}
-
-	int getCapacity()
-	{
-		return capacity;
-	}
-
 	
-	string drop() {
-		if (coil[packagesDispensed] == 0) {
-			throw runtime_error("Out of stock!");
+	string drop() 
+	{
+		if (coil[1] == coil[0])
+		{
+			cout << "Out of stock" << endl; 
 		}
-		packagesDispensed--;
-		return snack;
+
+		string droppedsnack = coil[1];
+
+		// All items move down to decrease stock
+		for int(i = 1; i < 5; i++)
+		{
+			coil[i] = coil[i + 1];
+			// Not sure if we still need/want this
+			packagesDispensed++;
+
+		}
+
+		coil[5] = coil[0];
+
+		return droppedSnack; 
 	}
 };

@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 #include <string>
 #include <iostream>
 using namespace std;
@@ -7,13 +6,9 @@ using namespace std;
 class RetrievalBin {
 private:
 	bool status;
-	vector<string> contents;
+	string contents[10];
 
 public:
-	vector<string> getContents()
-	{
-		return contents;
-	}
 	void release(string snack)
 	{
 		contents.push_back(snack);

@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 #include <string>
 #include <iostream>
 #include "SnackDispenser.h"
@@ -14,46 +13,37 @@ private:
 	int price;
 
 public:
-	vector<slotRow> createSnacks()
-	{
-		string names[20] =
-		{
-			"Plain Chips", "Pretzels", "Popcorn", "Oreos", "Hersheys",
-			"Kind Bar", "Crackers", "Haribo Gummy Bears", "Salted Peanuts", "KitKat",
-			"Cheetos", "Fruit Snacks", "M&Ms", "Honey Buns", "Doritos Purple",
-			"Wafers", "Mints", "Skittles", "Sunflower Seeds", "Doritos Blue"
-		};
 
-		vector<slotRow> rows;
-		int n = 0;
-		for (int i = 0; i < 2; i++)
-		{
-			slotRow row;
-			row.setID(i + 1);
-			vector<packageSlot>& slots = row.getSlots();
-			for (int j = 0; j < slots.size(); j++)
-			{
-				slots[j].setPackageID(n + 1);
-				slots[j].setSnack(names[n]);
-				n++;
-			}
-			rows.push_back(row);
-		}
-		return rows;
+	vendingMachine()
+	{
+		state = false;
+		price = 0;
 	}
 
-	vendingMachine() : snackDispenser(createSnacks())
+	void refil()
 	{
-		state = true;
-		price = 0;
+		if status = false
+		{
+			snackDispenser.setRefill(true);
+			snackDispenser.refillSlots();
+			snackDispenser.setRefill(false);
+			state = true;
+		}
 	}
 
 	void run()
 	{
-		char again = 'y';
-		while (again == 'y') {
+		if (state == false)
+		{
+			cout << "Refill machine first" << endl;
+			return;
+		}
+
+		char runagain = "y";
+		while (runagain == 'y')
+		{
 			snackDispenser.display();
-			cout << "\nBuy another snack? (y/n): ";
+			cout << "\nDo you want to buy another snack (y/n)? ";
 			cin >> again;
 		}
 	}
