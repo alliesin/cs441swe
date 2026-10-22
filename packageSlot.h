@@ -1,76 +1,74 @@
 #pragma once
 #include <string>
-#include "slotRow.h"
+#include <vector>
+#include <stdexcept>
+using namespace std;
 
 class packageSlot {
 private:
-	int packagesDispensed;
-	int Coil[10];
+	int packagesDispensed;   
+	int capacity;
+	vector<int> coil;        
 	string snack;
-	int packageID; 
-	slotRow row;
+	int packageID;
 
 public:
-// constructor for the slot itself
-	packageSlot() 
+	
+	packageSlot()
 	{
 		packagesDispensed = 0;
+		capacity = 0;
 		packageID = 0;
 		snack = "";
 	}
-//Counts how many packages are being dispensed, acts as a counter
-	void dispense() {
-		if (packagesDispensed < row.getCapacity()) {
-			packagesDispensed++;
-		}
-	}
-//gets and sets the snacks name
-	void getSnack() 
+
+	
+	string getSnack()
 	{
 		return snack;
 	}
-	void setSnack(string newSnack) 
+	void setSnack(string newSnack)
 	{
 		snack = newSnack;
 	}
-//gets and sets the quantity
-	void setPackagesDispensed(int packages) 
+
+	int getPackagesDispensed()
 	{
-		packagesDispensed = packages;
+		return packagesDispensed;
 	}
-	void getPackagesDispensed() 
-	{
-		return packagesDispensed; 
-	}
-// gets and sets the packageID (slot itself id)
-	void getPackageID()
+
+	
+	int getPackageID()
 	{
 		return packageID;
 	}
-	void setPackagaeID()
+	void setPackageID(int id)
 	{
-		packageID = ID;
+		packageID = id;
 	}
-// grabs the capacity from slotrow and assigns it to each slot
-	void setCapacity(int capacity) {
-		row.setCapacity(capacity);
 
-		for (int i = 0; i < 10; i++) {
-			Coil[i] = capacity;
+	
+	void setCapacity(int cap)
+	{
+		capacity = cap;
+		coil.clear();
+		for (int i = 0; i <= capacity; i++) {
+			coil.push_back(i);
 		}
+		packagesDispensed = capacity;
 	}
 
-	int getCapacity() {
-		return row.getCapacity();
+	int getCapacity()
+	{
+		return capacity;
 	}
-//checks the stock of the slot and dispenses the product
+
+	
 	string drop() {
-		if (packagesDispensed == row.getCapacity()) {
-			return "";
+		if (coil[packagesDispensed] == 0) {
+			throw runtime_error("Out of stock!");
 		}
-
-		string droppedSnack = snack;
-		dispense();
-		return droppedSnack;
+		packagesDispensed--;
+		return snack;
 	}
 };

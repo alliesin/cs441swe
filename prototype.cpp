@@ -1,8 +1,9 @@
-including namespace std;
 #include "vendingMachine.h"
+using namespace std; 
 
 int main() {
-    vendingMachine machine;
+	vendingMachine machine;
+	machine.run();
 
-    return 0;
+	return 0;
 }

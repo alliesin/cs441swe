@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <iostream>
+using namespace std;
 
 class RetrievalBin {
 private:
@@ -8,22 +10,22 @@ private:
 	vector<string> contents;
 
 public:
-	void getContents() 
+	vector<string> getContents()
 	{
 		return contents;
 	}
-	void release(vector<string> newContents)
+	void release(string snack)
 	{
-		contents = newContents; 
+		contents.push_back(snack);
 	}
-	void emptyContents() 
+	void retrieveSnack()
 	{
 		cout << "You take your snacks. Enjoy!" << endl;
 		cout << "Obtained: ";
-		vector<string> contents = getContents();
 		for (string s : contents) {
 			cout << s << ' ';
 		}
+		cout << endl;
 		contents.clear();
 	}
 };

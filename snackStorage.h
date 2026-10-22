@@ -1,45 +1,44 @@
 #pragma once
 #include <vector>
-#include <format>
+#include <string>
+#include <iostream>
 #include "packageSlot.h"
 #include "slotRow.h"
-#include "vendingMachine.h"
+using namespace std;
 
 class SnackStorage {
 private:
-    int numberOfRows = 2;
     vector<slotRow> slotRows;
 
 public:
     //constructor
-    SnackStorage()
+    SnackStorage(vector<slotRow> rows)
     {
-        for (int i = 0; i < numberOfRows; i++) {
-            slotRows.push_back(new slotRow());
-        }
+        slotRows = rows;
     }
 
     //Print the Row ID, then the snacks and IDs of the slots in that row
     void displaySnack() {
         for (int i = 0; i < slotRows.size(); i++) {
-            cout << format("Row {}:", slotRow[i].getID()) << endl;
+            cout << "Row " << slotRows[i].getID() << ":" << endl;
+            vector<packageSlot>& slots = slotRows[i].getSlots();
             for (int i = 0; i < slots.size(); i++) {
-                cout << format("{}, Press [{}]", slots[i].getSnack(), slots[i].getPackageID()) << endl;
+                cout << slots[i].getSnack() << ", Press [" << slots[i].getPackageID() << "]" << endl;
             }
         }
     }
 
     //Check if we have selected snack
     string dropSnack(int choice) {
-        if () {
-            //need to implement, would it talk to slotRow then to packageSlot?? her email says that Dispenser talks directly to slot
-            //which bypasses the component structure
-        }
-        else {
-            return "";
+        for (int i = 0; i < slotRows.size(); i++) {
+            vector<packageSlot>& slots = slotRows[i].getSlots();
+            for (int i = 0; i < slots.size(); i++) {
+                if (slots[i].getPackageID() == choice) {
+                    return slots[i].drop();
+                }
+            }
         }
     }
-
 
 };
 
