@@ -4,12 +4,18 @@ class Door {
 private:
 	bool state;
 public:
-	void openDoor() 
+	void setState(bool s) {
+		state = s;
+	}
+	bool getState() {
+		return state;
+	}
+	void openDoor()
 	{
-		state = true;
+		setState(true);
 	}
 	void closeDoor()
 	{
-		state = false;
+		setState(false);
 	}
 };

@@ -7,14 +7,14 @@ private:
 	bool state;
 	SnackDispenser snackDispenser;
 	Door door;
-	int price; 
+	int price;
 
 public:
 	void setPrice()
 	{
 		price = 0; 
 	}
-	void getPrice()
+	int getPrice()
 	{
 		return price; 
 	}

@@ -18,8 +18,8 @@ public:
 	}
 	void emptyContents() 
 	{
-		cout << "You take your snacks. Enjoy!";
-		cout << "Obtained:";
+		cout << "You take your snacks. Enjoy!" << endl;
+		cout << "Obtained: ";
 		vector<string> contents = getContents();
 		for (string s : contents) {
 			cout << s << ' ';
