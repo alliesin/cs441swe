@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <string>
 
 class RetrievalBin {
 private:
@@ -11,12 +12,18 @@ public:
 	{
 		return contents;
 	}
-	void setContents(vector<string> newContents)
+	void release(vector<string> newContents)
 	{
 		contents = newContents; 
 	}
 	void emptyContents() 
 	{
+		cout << "You take your snacks. Enjoy!";
+		cout << "Obtained:";
+		vector<string> contents = getContents();
+		for (string s : contents) {
+			cout << s << ' ';
+		}
 		contents.clear();
 	}
 };

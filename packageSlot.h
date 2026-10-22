@@ -37,7 +37,6 @@ public:
 	void setPackagesDispensed(int packages) 
 	{
 		packagesDispensed = packages;
-
 	}
 	void getPackagesDispensed() 
 	{

@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <iostram>
+#include <iostream> 
 #include "snackStorage.h"
 #include "retrievalBin.h"
 #include "packageSlot.h"
@@ -18,13 +18,13 @@ public:
 		int choice;
 
 		cout << "\nAll Snacks: " << endl;
-		//grabs all the snacks from snackDispenser which has the vector of all sancks
-		storage.DisplaySnack():
+		//grabs all the snacks from snackStorage which has the vector of all snacks
+		storage.displaySnack():
 
 		cout << "\n Select a snack and enter the package ID: " << endl;
 		cin >> choice;
 
-		// checks to see if that cnack is there in snackStorage, grabs it, and releases it to retrievalBin
+		// checks to see if that snack is there in snackStorage, grabs it, and releases it to retrievalBin
 		string selectedSnack = storage.dropSnack(choice);
 
 		if (selectedSnack == "") {
