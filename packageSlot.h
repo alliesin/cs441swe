@@ -12,7 +12,6 @@ public:
 	
 	packageSlot()
 	{
-		packagesDispensed = 0;
 		packageID = 0;
 		for (int i = 1; i < 6; i++)
 		{
@@ -24,10 +23,6 @@ public:
 	string getSnack()
 	{
 		return coil[1];
-	}
-	int getPackagesDispensed()
-	{
-		return packagesDispensed;
 	}
 	int getPackageID()
 	{
@@ -44,7 +39,7 @@ public:
 
 	void refill(string snack)
 	{
-		for (int i = 1; 1 < 6; i++)
+		for (int i = 1; i < 6; i++)
 		{
 			coil[i] = snack;
 		}
@@ -54,10 +49,10 @@ public:
 	{
 		if (isEmpty())
 		{
-			throw runtime_error("Out of stock!";
+			throw runtime_error("Out of stock!");
 		}
 
-		string droppedsnack = coil[1];
+		string droppedSnack = coil[1];
 
 		// All items move down to decrease stock
 		for (int i = 1; i < 5; i++)

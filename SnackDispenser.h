@@ -28,19 +28,18 @@ public:
 	{
 		string snacks[10] =
 		{
-			"Plain Chips", "Pretzels", "Popcorn", "Oreos", "Hersheys",
+			"Lays Chips", "Pretzels", "Popcorn", "Oreos", "Hersheys",
 			 "Salted Peanuts", "KitKat","M&Ms", "Doritos Purple", "Skittles"
 		};
 
 		int n = 0;
 		for (int i = 0; i < 2; i++)
 		{
-			for (int y = 0; y < 5; i++)
+			for (int y = 0; y < 5; y++)
 			{
-				names[i][y] = snacks[n]
+				names[i][y] = snacks[n];
 				n++;
 			}
-			rows.push_back(row);
 		}
 	}
 	void refillSlots()
@@ -49,8 +48,8 @@ public:
 		{
 			createSnacks();
 			cout << "Refilling slots." << endl;
-			storage.refill(names)
-		}
+			storage.refill(names);
+		};
 	}
 
 	void display()
@@ -60,7 +59,7 @@ public:
 
 		cout << "\nAll Snacks: " << endl;
 		//grabs all the snacks from snackStorage
-		for (int i = 0; i < 2; i++) 
+		for (int i = 0; i < 2; i++)
 		{
 			cout << "Row " << i << ":" << endl;
 			for (int y = 0; y < 5; y++)
@@ -68,18 +67,26 @@ public:
 				string snack = storage.getSnack(i, y);
 
 				if (snack.empty()) {
-					snack = '(Sold out)'
+					snack = "(Sold out)";
 				}
 				cout << snack << " Press: " << storage.getPackageID(i, y) << endl;
 			}
 		}
 
-		cout << "\n Select a snack and enter the package ID: " << endl;
-		if (!(cin >> choice))
+		cout << "\nSelect a snack and enter the package ID: " << endl;
+		while (true)
 		{
-			cin.clear();
-			cout << "Invalid choice" << endl;
-			return;
+			cin >> choice;
+			if (cin.fail())
+			{
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				cout << "Invalid choice. Please enter a valid package ID: ";
+			}
+			else
+			{
+				break;
+			}
 		}
 
 		// checks to see if that snack is there in snackStorage, grabs it, and releases it to retrievalBin
@@ -96,4 +103,4 @@ public:
 		}
 	}
 
-}
+};

@@ -16,10 +16,10 @@ public:
         int id = 1;
         for (int i = 0; i < 2; i++)
         {
-            for (int y = 0, y < 5; y++)
+            for (int y = 0; y < 5; y++)
             {
                 slots[i][y].setPackageID(id);
-                id++
+                id++;
             }
         }
     }

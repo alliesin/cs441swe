@@ -38,15 +38,15 @@ public:
 		if (state == false)
 		{
 			cout << "Refill machine first." << endl;
-			return 0;
+			return;
 		}
 
-		char runagain = "y";
+		char runagain = 'y';
 		while (runagain == 'y')
 		{
 			snackDispenser.display();
 			cout << "\nDo you want to buy another snack (y/n)? ";
-			cin >> again;
+			cin >> runagain;
 		}
 	}
 };

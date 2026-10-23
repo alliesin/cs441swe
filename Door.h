@@ -2,8 +2,11 @@
 
 class Door {
 private:
-	bool state = false;
+	bool state;
 public:
+	Door() {
+		state = false;
+	}
 	void setState(bool s) {
 		state = s;
 	}
