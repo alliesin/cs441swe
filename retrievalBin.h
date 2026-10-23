@@ -1,12 +1,15 @@
 #pragma once
 #include <string>
+#include <vector>
 #include <iostream>
 using namespace std;
 
 class RetrievalBin {
 private:
 	bool status;
-	string contents[10];
+
+	//contents cant be a fixed array because it does grow and shrink
+	vector<string> contents;
 
 public:
 	void release(string snack)

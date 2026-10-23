@@ -17,7 +17,7 @@ private:
 public:
 	SnackDispenser()
 	{
-		refill = true
+		refill = false;
 	}
 	void setRefill(bool state)
 	{
@@ -32,7 +32,7 @@ public:
 			 "Salted Peanuts", "KitKat","M&Ms", "Doritos Purple", "Skittles"
 		};
 
-		int s = 0;
+		int n = 0;
 		for (int i = 0; i < 2; i++)
 		{
 			for (int y = 0; y < 5; i++)
@@ -42,13 +42,13 @@ public:
 			}
 			rows.push_back(row);
 		}
-		return rows;
 	}
 	void refillSlots()
 	{
-		if (refill = true)
+		if (refill)
 		{
 			createSnacks();
+			cout << "Refilling slots." << endl;
 			storage.refill(names)
 		}
 	}
@@ -62,24 +62,37 @@ public:
 		//grabs all the snacks from snackStorage
 		for (int i = 0; i < 2; i++) 
 		{
-			cout << "Row" << i << : << endl;
+			cout << "Row " << i << ":" << endl;
 			for (int y = 0; y < 5; y++)
 			{
-				cout << storage.getSnack(i, y) << "Press: " << storage.getPackageID(i, y) << endl;
+				string snack = storage.getSnack(i, y);
+
+				if (snack.empty()) {
+					snack = '(Sold out)'
+				}
+				cout << snack << " Press: " << storage.getPackageID(i, y) << endl;
 			}
 		}
 
 		cout << "\n Select a snack and enter the package ID: " << endl;
-		cin >> choice;
+		if (!(cin >> choice))
+		{
+			cin.clear();
+			cout << "Invalid choice" << endl;
+			return;
+		}
 
 		// checks to see if that snack is there in snackStorage, grabs it, and releases it to retrievalBin
 		try {
-			string slectedSnack = storage.dropSnack(choice);
+			string selectedSnack = storage.dropSnack(choice);
 			bin.release(selectedSnack);
 			bin.retrieveSnack();
 		}
-		catch (exception& e) {
-			cout << "Invalid Choice" << endl;
+		catch (out_of_range& e) {
+			cout << "Invalid package ID" << endl; //catches out_of_range from snackStorage
+		}
+		catch (runtime_error& e) {
+			cout << e.what() << endl;   // catches runtime_error from packageSlot
 		}
 	}
 

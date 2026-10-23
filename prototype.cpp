@@ -3,7 +3,7 @@ using namespace std;
 
 int main() {
 	vendingMachine machine;
-	machine.refil();
+	machine.refill();
 	machine.run();
 
 	return 0;

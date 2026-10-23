@@ -6,14 +6,14 @@ using namespace std;
 
 class SnackStorage {
 private:
-    // matrix 2x5
+     // matrix 2x5
     packageSlot slots[2][5]; 
 
 public:
     //constructor
     SnackStorage()
     {
-        for id = 1;
+        int id = 1;
         for (int i = 0; i < 2; i++)
         {
             for (int y = 0, y < 5; y++)
@@ -47,13 +47,18 @@ public:
     
     //Check if we have selected snack
     string dropSnack(int choice) {
-        for (int i = 0; i < 2; i++) {
-            for (int y = 0; y < 5; y++) {
-                if (slots[i][y].getPackageID() == choice) {
+        for (int i = 0; i < 2; i++) 
+        {
+            for (int y = 0; y < 5; y++) 
+            {
+                if (slots[i][y].getPackageID() == choice) 
+                {
+                    cout << "Dropping snack. Pick up in retrieval bin!" << endl;
                     return slots[i][y].drop();
                 }
             }
         }
+        throw out_of_range("Invalid package ID");
     }
 
 };

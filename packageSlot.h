@@ -4,8 +4,7 @@
 using namespace std;
 
 class packageSlot {
-private:
-	int packagesDispensed;   
+private:   
 	string coil[6];
 	int packageID;
 
@@ -38,6 +37,10 @@ public:
 	{
 		packageID = id;
 	}
+	bool isEmpty()
+	{
+		return (coil[0] == coil[1]);
+	}
 
 	void refill(string snack)
 	{
@@ -49,20 +52,17 @@ public:
 	
 	string drop() 
 	{
-		if (coil[1] == coil[0])
+		if (isEmpty())
 		{
-			cout << "Out of stock" << endl; 
+			throw runtime_error("Out of stock!";
 		}
 
 		string droppedsnack = coil[1];
 
 		// All items move down to decrease stock
-		for int(i = 1; i < 5; i++)
+		for (int i = 1; i < 5; i++)
 		{
 			coil[i] = coil[i + 1];
-			// Not sure if we still need/want this
-			packagesDispensed++;
-
 		}
 
 		coil[5] = coil[0];

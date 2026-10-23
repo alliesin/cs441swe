@@ -20,13 +20,15 @@ public:
 		price = 0;
 	}
 
-	void refil()
+	void refill()
 	{
-		if status = false
+		if (state == false)
 		{
+			door.openDoor();
 			snackDispenser.setRefill(true);
 			snackDispenser.refillSlots();
 			snackDispenser.setRefill(false);
+			door.closeDoor();
 			state = true;
 		}
 	}
@@ -35,8 +37,8 @@ public:
 	{
 		if (state == false)
 		{
-			cout << "Refill machine first" << endl;
-			return;
+			cout << "Refill machine first." << endl;
+			return 0;
 		}
 
 		char runagain = "y";

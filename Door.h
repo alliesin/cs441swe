@@ -2,7 +2,7 @@
 
 class Door {
 private:
-	bool state;
+	bool state = false;
 public:
 	void setState(bool s) {
 		state = s;
@@ -12,10 +12,12 @@ public:
 	}
 	void openDoor()
 	{
+		cout << "Opened the door." << endl;
 		setState(true);
 	}
 	void closeDoor()
 	{
+		cout << "Closed the door." << endl;
 		setState(false);
 	}
 };
